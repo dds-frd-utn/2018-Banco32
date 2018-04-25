@@ -68,4 +68,5 @@ public class CuentaRest {
     public List<Cuenta> findByIdCliente(@PathParam("idCliente") int idCliente){
         return ejbCuentaFacade.findByIdCliente(idCliente);
     }
+
 }

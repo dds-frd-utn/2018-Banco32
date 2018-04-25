@@ -20,8 +20,8 @@ public class MovimientoRest {
 
     @EJB
     private MovimientoFacade ejbMovimientoFacade;
-//obtener todas las entidades
-
+    
+    //obtener todas las entidades
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<Movimiento> findAll() {
@@ -31,28 +31,21 @@ public class MovimientoRest {
 
     //crear movimiento
     @POST
-    @Path("/crear/{idCuenta}")
+    @Path("/{idCuenta}")
     @Consumes({MediaType.APPLICATION_JSON})
     public void create(Movimiento movimiento, @PathParam("idCuenta") int idCuenta) {
-        //movimiento.setIdCuenta(ejbMovimientoFacade.find(idCuenta));
-        movimiento.setIdCuenta(idCuenta);
-        movimiento.setCreado(new Date()); // seteo la fecha de creacion (actual)
-        movimiento.setImporte(1000);      
-        movimiento.setTipo(1);            // tipo 1 no definido?
-        movimiento.setEstado(2);          // tipo 2 no definido?
-        movimiento.setProcesado(new Date());
         ejbMovimientoFacade.create(movimiento);
     }
 
-//actualizar entidades
+    //actualizar entidades
     @PUT
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
     public void edit(@PathParam("id") long id, Movimiento movimiento) {
         ejbMovimientoFacade.edit(movimiento);
     }
-//eliminar entidades
-
+    
+    //eliminar entidades
     @DELETE
     @Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
     @Path("/{id}")
@@ -60,7 +53,7 @@ public class MovimientoRest {
         ejbMovimientoFacade.remove(ejbMovimientoFacade.find(id));
     }
 
-//obtener una entidad por id
+    //obtener un movimiento por su id
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
@@ -72,7 +65,22 @@ public class MovimientoRest {
     @GET
     @Path("/ultimos/{idCuenta}")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<Movimiento> findByIdCuenta(@PathParam("idCuenta") int idCuenta) {
-        return ejbMovimientoFacade.findByIdCuenta(idCuenta);
+    public List<Movimiento> findByIdCuentaUltimos(@PathParam("idCuenta") int idCuenta) {
+        return ejbMovimientoFacade.findByIdCuentaUltimos(idCuenta);
+    }
+    
+    //Obtener los movimientos de una cuenta.
+    @GET
+    @Path("/cuenta/{idCuenta}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<Movimiento> findById(@PathParam("idCuenta")long id){
+        return ejbMovimientoFacade.findByIdCuenta(id);
+    }
+    
+    @GET
+    @Path("/{idCuenta}/{estado}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<Movimiento> findByEstadoYCuenta(@PathParam("estado") int estado,@PathParam("idCuenta") long idCuenta){
+        return ejbMovimientoFacade.findByEstadoYCuenta(estado,idCuenta);
     }
 }

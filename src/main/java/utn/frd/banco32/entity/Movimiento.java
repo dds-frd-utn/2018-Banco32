@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Movimiento.findByProcesado", query = "SELECT m FROM Movimiento m WHERE m.procesado = :procesado")
     , @NamedQuery(name = "Movimiento.findByTipo", query = "SELECT m FROM Movimiento m WHERE m.tipo = :tipo")
     , @NamedQuery(name = "Movimiento.findByEstado", query = "SELECT m FROM Movimiento m WHERE m.estado = :estado")
+    , @NamedQuery(name = "Movimiento.findByEstadoYCuenta", query = "SELECT m FROM Movimiento m WHERE (m.estado = :estado) and (m.idCuenta = :idCuenta)")
     , @NamedQuery(name = "Movimiento.findByImporte", query = "SELECT m FROM Movimiento m WHERE m.importe = :importe")
     , @NamedQuery(name = "Movimiento.findByIdCuenta", query = "SELECT m FROM Movimiento m WHERE m.idCuenta = :idCuenta")})
 public class Movimiento implements Serializable {

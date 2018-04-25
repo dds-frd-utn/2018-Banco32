@@ -9,6 +9,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import utn.frd.banco32.entity.Movimiento;
 
 /**
@@ -30,7 +31,17 @@ public class MovimientoFacade extends AbstractFacade<Movimiento> {
         super(Movimiento.class);
     }
     
-    public List<Movimiento> findByIdCuenta(long id){
+    public List<Movimiento> findByIdCuentaUltimos(long id){
         return em.createNamedQuery("Movimiento.findByIdCuenta",Movimiento.class).setParameter("idCuenta",id).setMaxResults(10).getResultList();
     }
+    
+    public List<Movimiento> findByIdCuenta(long id){
+        return em.createNamedQuery("Movimiento.findByIdCuenta",Movimiento.class).setParameter("idCuenta",id).getResultList();
+    }
+    
+    
+    public List<Movimiento> findByEstadoYCuenta(int estado, long idCuenta){
+        return em.createNamedQuery("Movimiento.findByEstadoYCuenta", Movimiento.class).setParameter("estado",estado).setParameter("idCuenta",idCuenta).getResultList();
+    }
+    
 }
