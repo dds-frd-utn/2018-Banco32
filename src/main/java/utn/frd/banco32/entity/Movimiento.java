@@ -166,5 +166,4 @@ public class Movimiento implements Serializable {
     public String toString() {
         return "utn.frd.banco32.entity.Movimiento[ id=" + id + " ]";
     }
-    
 }

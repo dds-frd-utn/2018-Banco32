@@ -5,6 +5,7 @@
  */
 package utn.frd.banco32.sessions;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +30,7 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
         super(Cuenta.class);
     }
     
+    public List<Cuenta> findByIdCliente(long id){
+        return em.createNamedQuery("Cuenta.findByIdCliente",Cuenta.class).setParameter("idCliente",id).getResultList();
+    }
 }

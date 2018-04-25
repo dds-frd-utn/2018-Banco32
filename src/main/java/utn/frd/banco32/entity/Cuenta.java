@@ -126,5 +126,4 @@ public class Cuenta implements Serializable {
     public String toString() {
         return "utn.frd.banco32.entity.Cuenta[ id=" + id + " ]";
     }
-    
 }

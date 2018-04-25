@@ -1,4 +1,5 @@
 package utn.frd.banco32.rest.services;
+
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -12,46 +13,51 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import utn.frd.banco32.entity.Cliente;
 import utn.frd.banco32.sessions.ClienteFacade;
+
 /**
-*
-* @author Sergio
-*/
+ *
+ * @author Sergio
+ */
 @Path("/cliente")
 public class ClienteRest {
-@EJB
-private ClienteFacade ejbClienteFacade;
-//obtener todas las entidades
-@GET
-@Produces({MediaType.APPLICATION_JSON})
-public List<Cliente> findAll(){
-return ejbClienteFacade.findAll();
-}
-//crear entidades
-@POST
-@Consumes({MediaType.APPLICATION_JSON})
-public void create(Cliente cliente){
-ejbClienteFacade.create(cliente);
-}
-//actualizar entidades
-@PUT
-@Consumes({MediaType.APPLICATION_JSON})
-@Path("/{id}")
-public void edit(@PathParam("id")long id, Cliente cliente){
-ejbClienteFacade.edit(cliente);
-}
-//eliminar entidades
-@DELETE
-@Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
-@Path("/{id}")
-public void remove(@PathParam("id")long id){
-ejbClienteFacade.remove( ejbClienteFacade.find(id) );
-}
-//obtener una entidad por id
-@GET
-@Path("/{id}")
-@Produces({MediaType.APPLICATION_JSON})
 
-public Cliente findById(@PathParam("id")long id){
-    return ejbClienteFacade.find(id);
-}
+    @EJB
+    private ClienteFacade ejbClienteFacade;
+//obtener todas las entidades
+
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<Cliente> findAll() {
+        return ejbClienteFacade.findAll();
+    }
+//crear entidades
+
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    public void create(Cliente cliente) {
+        ejbClienteFacade.create(cliente);
+    }
+//actualizar entidades
+
+    @PUT
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("/{id}")
+    public void edit(@PathParam("id") long id, Cliente cliente) {
+        ejbClienteFacade.edit(cliente);
+    }
+//eliminar entidades
+    @DELETE
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
+    @Path("/{id}")
+    public void remove(@PathParam("id") long id) {
+        ejbClienteFacade.remove(ejbClienteFacade.find(id));
+    }
+    
+//obtener una entidad por id
+    @GET
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Cliente findById(@PathParam("id") long id) {
+        return ejbClienteFacade.find(id);
+    }
 }
