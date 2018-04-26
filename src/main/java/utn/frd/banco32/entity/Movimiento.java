@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Movimiento.findByCreado", query = "SELECT m FROM Movimiento m WHERE m.creado = :creado")
     , @NamedQuery(name = "Movimiento.findByProcesado", query = "SELECT m FROM Movimiento m WHERE m.procesado = :procesado")
     , @NamedQuery(name = "Movimiento.findByTipo", query = "SELECT m FROM Movimiento m WHERE m.tipo = :tipo")
+    , @NamedQuery(name = "Movimiento.findSaldo", query = "SELECT SUM(m.importe)-(SELECT SUM(m.importe) FROM Movimiento m WHERE m.tipo = 1 and m.idCuenta = :idCuenta) FROM Movimiento m WHERE m.tipo = 2 and m.idCuenta = :idCuenta")
     , @NamedQuery(name = "Movimiento.findByEstado", query = "SELECT m FROM Movimiento m WHERE m.estado = :estado")
     , @NamedQuery(name = "Movimiento.findByEstadoYCuenta", query = "SELECT m FROM Movimiento m WHERE (m.estado = :estado) and (m.idCuenta = :idCuenta)")
     , @NamedQuery(name = "Movimiento.findByImporte", query = "SELECT m FROM Movimiento m WHERE m.importe = :importe")
@@ -114,7 +115,7 @@ public class Movimiento implements Serializable {
     public int getTipo() {
         return tipo;
     }
-
+    
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }

@@ -18,7 +18,7 @@ import utn.frd.banco32.sessions.TipoMovimientoFacade;
  *
  * @author Sergio
  */
-@Path("/cliente")
+@Path("/tipoMovimiento")
 public class TipoMovimientoRest {
 
     @EJB

@@ -83,4 +83,14 @@ public class MovimientoRest {
     public List<Movimiento> findByEstadoYCuenta(@PathParam("estado") int estado,@PathParam("idCuenta") long idCuenta){
         return ejbMovimientoFacade.findByEstadoYCuenta(estado,idCuenta);
     }
+    
+    // obtener saldo de una cuenta
+    @GET
+    @Path("/{idCuenta}/saldo")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Object getSaldos(@PathParam("idCuenta") int id){
+        return ejbMovimientoFacade.findSaldo(id);
+    }
+    
+
 }

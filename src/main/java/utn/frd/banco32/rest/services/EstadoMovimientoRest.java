@@ -18,7 +18,7 @@ import utn.frd.banco32.sessions.EstadoMovimientoFacade;
  *
  * @author Sergio
  */
-@Path("/cliente")
+@Path("/estadoMovimiento")
 public class EstadoMovimientoRest {
 
     @EJB
