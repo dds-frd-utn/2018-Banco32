@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Movimiento.findSaldo", query = "SELECT SUM(m.importe)-(SELECT SUM(m.importe) FROM Movimiento m WHERE m.tipo = 1 and m.idCuenta = :idCuenta) FROM Movimiento m WHERE m.tipo = 2 and m.idCuenta = :idCuenta")
     , @NamedQuery(name = "Movimiento.findByEstado", query = "SELECT m FROM Movimiento m WHERE m.estado = :estado")
     , @NamedQuery(name = "Movimiento.findByEstadoYCuenta", query = "SELECT m FROM Movimiento m WHERE (m.estado = :estado) and (m.idCuenta = :idCuenta)")
+    , @NamedQuery(name = "Movimiento.findByCuentaYDescripcion", query = "SELECT m FROM Movimiento m WHERE (m.descripcion = :descripcion) and (m.idCuenta = :idCuenta)")
     , @NamedQuery(name = "Movimiento.findByImporte", query = "SELECT m FROM Movimiento m WHERE m.importe = :importe")
     , @NamedQuery(name = "Movimiento.findByIdCuenta", query = "SELECT m FROM Movimiento m WHERE m.idCuenta = :idCuenta")})
 public class Movimiento implements Serializable {
@@ -71,7 +72,10 @@ public class Movimiento implements Serializable {
     @NotNull
     @Column(name = "id_cuenta")
     private int idCuenta;
-
+    @Basic(optional = true)
+    @Column(name = "descripcion")
+    private String descripcion;
+    
     public Movimiento() {
     }
 
@@ -79,13 +83,14 @@ public class Movimiento implements Serializable {
         this.id = id;
     }
 
-    public Movimiento(Integer id, Date creado, int tipo, int estado, double importe, int idCuenta) {
+    public Movimiento(Integer id, Date creado, int tipo, int estado, double importe, int idCuenta, String descripcion) {
         this.id = id;
         this.creado = creado;
         this.tipo = tipo;
         this.estado = estado;
         this.importe = importe;
         this.idCuenta = idCuenta;
+        this.descripcion = descripcion;
     }
 
     public Integer getId() {
@@ -106,6 +111,14 @@ public class Movimiento implements Serializable {
 
     public Date getProcesado() {
         return procesado;
+    }
+    
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String desc){
+        this.descripcion = desc;
     }
 
     public void setProcesado(Date procesado) {
