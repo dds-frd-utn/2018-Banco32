@@ -92,7 +92,7 @@
 								<h2>Documentación UML</h2>
 							</header>
 
-							<p>Diagramas UML de la solución propuesta para el proyecto.</p>
+							<p>Diagramas UML de la solución para el proyecto.</p>
 
 							<div class="row">
 								<div class="4u 12u(mobile)">
@@ -102,24 +102,13 @@
 											<h3>Diagrama del enunciado.</h3>
 										</header>
 									</article>
-									<article class="item">
-										<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-										<header>
-											<h3>Diagrama de entidad-relación</h3>
-										</header>
-									</article>
+									
 								</div>
 								<div class="4u 12u(mobile)">
 									<article class="item">
-										<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
+										<a href="images/umlGeneral.png" class="image fit"><img src="images/umlGeneral.png" alt="" /></a>
 										<header>
-											<h3>Diagrama UML</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-										<header>
-											<h3>Natoque Vitae</h3>
+											<h3>Diagrama general de todas las clases del proyecto</h3>
 										</header>
 									</article>
 								</div>
@@ -128,12 +117,6 @@
 										<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
 										<header>
 											<h3>Dolor Penatibus</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-										<header>
-											<h3>Orci Convallis</h3>
 										</header>
 									</article>
 								</div>
@@ -149,9 +132,100 @@
 								<h2>Documentación general</h2>
 							</header>
 
-                                                        <p><u>Estructura del proyecto</u></p>
+                                                    
 
 						</div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <ul>
+                                                <li><h3>Obtener los datos de un cliente.</h3>
+<ul>
+<li>Para obtener los datos de un cliente espec&igrave;fico, simplemente se llama a la URL
+<blockquote><span style="background-color: #e8e8e8;">/rest/cliente/{id_del_cliente}</span></blockquote>
+</li>
+<li>Todos los clientes registrados con sus datos:
+<blockquote><span style="background-color: #e8e8e8;">/rest/cliente/</span></blockquote>
+</li>
+</ul>
+</li>
+<li><strong><h3>Listar todas las cuentas asociadas a un cliente.</h3></strong>
+<ul>
+<li>Para obtener los datos de las cuentas de un cliente en espec&igrave;fico, simplemente se llama a la URL
+<blockquote><span style="background-color: #e8e8e8;">/rest/cuenta/{id_del_cliente}</span></blockquote>
+</li>
+<li>Todos las cuentas registradas con sus datos:
+<blockquote><span style="background-color: #e8e8e8;">/rest/cuenta/</span></blockquote>
+</li>
+</ul>
+</li>
+<li><strong><h3>Obtener los &uacute;ltimos 10 movimientos de una cuenta.</h3></strong>
+<blockquote><span style="background-color: #e8e8e8;">/rest/movimiento/ultimos/{id_cuenta}</span></blockquote>
+<ul>
+<li>Donde {id_cuenta} representa el id de la cuenta de cual queremos conocer sus &uacute;ltimos 10 movimientos.</li>
+</ul>
+</li>
+<li><h3>Crear un movimiento de cuenta.</h3></li>
+<li>Se hace mediante un JSON con la solicitud POST de la forma:</li>
+<blockquote><span style="background-color: #e8e8e8;">{
+	"apertura": "{fecha de apertura}",
+	"id": {id de cuenta},
+	"idCliente": {id de cliente},
+	"numero": {numero de cuenta}
+}</span></blockquote>
+<li><h3>Actualizar un movimiento de cuenta.</h3></li>
+<li>Se hace mediante un JSON con la solicitud PUT de la forma:</li>
+<blockquote><span style="background-color: #e8e8e8;">{
+	"apertura": "{fecha de apertura}",
+	"id": {id de cuenta},
+	"idCliente": {id de cliente},
+	"numero": {numero de cuenta}
+}</span></blockquote>
+<li><h3>Obtener el saldo de una cuenta.</h3>
+<blockquote><span style="background-color: #e8e8e8;">/rest/movimiento/{id_cuenta}/descripcion/{detalle_de_la_descripcion}</span></blockquote>
+<ul>
+<li>Donde {id_cuenta} representa el id de la cuenta de la cual queremos encontrar los movimientos, y {detalle_de_la_descripcion} es la descripci&oacute;n que queremos buscar.</li>
+</ul>
+</li>
+<li><strong><h3>Obtener todos los movimientos de una cuenta en un estado espec&iacute;fico.</h3></strong>
+<blockquote><span style="background-color: #e8e8e8;">/rest/movimiento/{id_cuenta}/{estado}</span></blockquote>
+<ul>
+<li>Donde {id_cuenta} representa el id de la cuenta de la cual queremos encontrar los movimientos, y {estado} el estado que queremos buscar</li>
+</ul>
+</li>
+<li><strong><h3>Buscar movimientos de una cuenta seg&uacute;n una descripci&oacute;n dada.</h3></strong>
+<blockquote><span style="background-color: #e8e8e8;">/rest/movimiento/{id_cuenta}/descripcion/{detalle_de_la_descripcion}</span></blockquote>
+<ul>
+<li>Donde {id_cuenta} representa el id de la cuenta de la cual queremos encontrar los movimientos, y {detalle_de_la_descripcion} es la descripci&oacute;n que queremos buscar.</li>
+</ul>
+</li>
+</ul>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
 					</section>
                                 
                                 
